@@ -5,16 +5,16 @@ from snacks.models import Snack
 
 # Create your tests here.
 
-class MoviesTests(TestCase):
+class SnackTests(TestCase):
 
     def setUp(self):
         self.user = get_user_model().objects.create_user(
             username="tester", email="tester@email.com", password="pass")
         self.snack = Snack.objects.create(
-            name = 'Twix', rating = 10, reviewer = self.user)
+            name = 'Twix', description = 'Caramel Cookie', purchaser = self.user)
 
     def test_string_representation(self):
-        self.assertEqual(str(self.snack), 'Twix')
+        self.assertEqual(str(self.snack.name), 'Twix')
 
     def test_movie_name(self):
         self.assertEqual(f'{self.snack.name}', 'Twix')
